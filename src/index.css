@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* VNIT Brand Colors */
+    --vnit-blue: 237 64% 31%;           /* #1a237e - Deep Blue */
+    --vnit-orange: 28 100% 50%;         /* #ff6f00 - Orange */
+    --vnit-blue-light: 237 64% 45%;     /* Lighter blue for hover states */
+    --vnit-orange-light: 28 100% 60%;   /* Lighter orange */
+    
+    /* Base Colors */
+    --background: 0 0% 100%;
+    --foreground: 237 64% 20%;
+    
+    /* Card & Surface */
+    --card: 0 0% 100%;
+    --card-foreground: 237 64% 20%;
+    --card-hover: 237 20% 97%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 237 64% 20%;
+    
+    /* Primary - VNIT Blue */
+    --primary: 237 64% 31%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 237 64% 45%;
+    
+    /* Secondary - VNIT Orange */
+    --secondary: 28 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 28 100% 60%;
+    
+    /* Muted */
+    --muted: 237 20% 96%;
+    --muted-foreground: 237 20% 40%;
+    
+    /* Accent */
+    --accent: 237 64% 95%;
+    --accent-foreground: 237 64% 31%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Border & Input */
+    --border: 237 20% 88%;
+    --input: 237 20% 88%;
+    --ring: 237 64% 31%;
+    
+    /* Success */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Radius */
+    --radius: 0.75rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 20px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--vnit-blue)), hsl(var(--vnit-blue-light)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--vnit-orange)), hsl(var(--vnit-orange-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--vnit-blue)) 0%, hsl(var(--vnit-orange)) 100%);
+    
+    /* Transitions */
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 237 64% 8%;
+    --foreground: 0 0% 98%;
+    
+    --card: 237 40% 12%;
+    --card-foreground: 0 0% 98%;
+    --card-hover: 237 40% 16%;
+    
+    --popover: 237 40% 12%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 237 64% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 237 64% 70%;
+    
+    --secondary: 28 100% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 28 100% 70%;
+    
+    --muted: 237 40% 16%;
+    --muted-foreground: 237 20% 70%;
+    
+    --accent: 237 40% 20%;
+    --accent-foreground: 0 0% 98%;
+    
+    --border: 237 30% 24%;
+    --input: 237 30% 24%;
+    --ring: 237 64% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+}
+
+@layer components {
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-[1.02];
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary-hover transition-colors;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
