@@ -40,6 +40,18 @@ const Academics = () => {
     setSelectedSemester(null);
   };
 
+  const handleEnrollNow = () => {
+    window.open('https://www.geeksforgeeks.org/courses', '_blank');
+  };
+
+  const handleMaterialView = () => {
+    window.open('https://cstutorialpoint.com/computer-science-notes/', '_blank');
+  };
+
+  const handleMaterialDownload = () => {
+    window.open('https://cstutorialpoint.com/computer-science-notes/', '_blank');
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Header */}
@@ -169,7 +181,7 @@ const Academics = () => {
                           <Badge variant="outline">{course.enrolledStudents} students</Badge>
                         </div>
                       </div>
-                      <Button>Enroll Now</Button>
+                      <Button onClick={handleEnrollNow}>Enroll Now</Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -203,11 +215,18 @@ const Academics = () => {
                               </div>
                             </div>
                             <div className="flex gap-2">
-                              <Button size="sm" variant="outline">
+                              <Button 
+                                size="sm" 
+                                variant="outline"
+                                onClick={handleMaterialView}
+                              >
                                 <Eye className="h-4 w-4 mr-1" />
                                 View
                               </Button>
-                              <Button size="sm">
+                              <Button 
+                                size="sm"
+                                onClick={handleMaterialDownload}
+                              >
                                 <Download className="h-4 w-4 mr-1" />
                                 Download
                               </Button>
