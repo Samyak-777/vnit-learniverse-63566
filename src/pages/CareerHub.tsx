@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, FileText, Bell, Video, Calendar, Building } from 'lucide-react';
+import { Briefcase, FileText, Bell, Video, Calendar, Building, ExternalLink } from 'lucide-react';
 
 const CareerHub = () => {
   const jobPostings = [
@@ -15,6 +15,7 @@ const CareerHub = () => {
       deadline: '2025-12-15',
       eligibility: ['CSE', 'ECE', 'IT'],
       ctc: '₹15-20 LPA',
+      applyLink: 'https://careers.google.com/jobs/'
     },
     {
       id: '2',
@@ -24,6 +25,47 @@ const CareerHub = () => {
       deadline: '2025-12-20',
       eligibility: ['CSE', 'IT'],
       ctc: '₹25-30 LPA',
+      applyLink: 'https://careers.microsoft.com/'
+    },
+    {
+      id: '3',
+      company: 'Amazon',
+      position: 'SDE 1',
+      type: 'Full Time',
+      deadline: '2025-12-18',
+      eligibility: ['CSE', 'ECE', 'IT', 'EEE'],
+      ctc: '₹20-25 LPA',
+      applyLink: 'https://www.amazon.jobs/'
+    },
+    {
+      id: '4',
+      company: 'Meta',
+      position: 'Frontend Engineer',
+      type: 'Full Time',
+      deadline: '2025-12-22',
+      eligibility: ['CSE', 'IT'],
+      ctc: '₹30-35 LPA',
+      applyLink: 'https://www.metacareers.com/'
+    },
+    {
+      id: '5',
+      company: 'Apple',
+      position: 'iOS Developer',
+      type: 'Full Time',
+      deadline: '2025-12-25',
+      eligibility: ['CSE', 'IT'],
+      ctc: '₹35-40 LPA',
+      applyLink: 'https://www.apple.com/careers/in/'
+    },
+    {
+      id: '6',
+      company: 'Netflix',
+      position: 'Backend Engineer',
+      type: 'Full Time',
+      deadline: '2025-12-28',
+      eligibility: ['CSE'],
+      ctc: '₹40-45 LPA',
+      applyLink: 'https://jobs.netflix.com/'
     },
   ];
 
@@ -35,6 +77,7 @@ const CareerHub = () => {
       date: '2025-11-15',
       time: '10:00 AM',
       mode: 'Online',
+      prampLink: 'https://www.pramp.com/#/'
     },
     {
       id: '2',
@@ -43,13 +86,114 @@ const CareerHub = () => {
       date: '2025-11-18',
       time: '2:00 PM',
       mode: 'In-person',
+      prampLink: 'https://www.pramp.com/#/'
+    },
+    {
+      id: '3',
+      company: 'Microsoft',
+      round: 'Final Technical Round',
+      date: '2025-11-20',
+      time: '11:30 AM',
+      mode: 'Online',
+      prampLink: 'https://www.pramp.com/#/'
     },
   ];
 
   const mockInterviews = [
-    { id: '1', topic: 'Data Structures', slots: 5, duration: '45 mins' },
-    { id: '2', topic: 'System Design', slots: 3, duration: '60 mins' },
-    { id: '3', topic: 'Behavioral', slots: 8, duration: '30 mins' },
+    { 
+      id: '1', 
+      topic: 'Data Structures', 
+      slots: 5, 
+      duration: '45 mins',
+      prampLink: 'https://www.pramp.com/#/'
+    },
+    { 
+      id: '2', 
+      topic: 'System Design', 
+      slots: 3, 
+      duration: '60 mins',
+      prampLink: 'https://www.pramp.com/#/'
+    },
+    { 
+      id: '3', 
+      topic: 'Behavioral', 
+      slots: 8, 
+      duration: '30 mins',
+      prampLink: 'https://www.pramp.com/#/'
+    },
+    { 
+      id: '4', 
+      topic: 'Algorithm Design', 
+      slots: 6, 
+      duration: '50 mins',
+      prampLink: 'https://www.pramp.com/#/'
+    },
+  ];
+
+  const applications = [
+    {
+      id: '1',
+      company: 'Google',
+      position: 'Software Engineer Intern',
+      status: 'Under Review',
+      appliedDate: '2025-11-10',
+      nextRound: 'Coding Test',
+      statusColor: 'bg-blue-500'
+    },
+    {
+      id: '2',
+      company: 'Microsoft',
+      position: 'SDE Full Time',
+      status: 'Interview Scheduled',
+      appliedDate: '2025-11-08',
+      nextRound: 'Technical Round 1',
+      statusColor: 'bg-green-500'
+    },
+    {
+      id: '3',
+      company: 'Amazon',
+      position: 'SDE 1',
+      status: 'Rejected',
+      appliedDate: '2025-11-05',
+      nextRound: 'None',
+      statusColor: 'bg-red-500'
+    },
+    {
+      id: '4',
+      company: 'Meta',
+      position: 'Frontend Engineer',
+      status: 'Offer Received',
+      appliedDate: '2025-11-01',
+      nextRound: 'Offer Discussion',
+      statusColor: 'bg-green-600'
+    },
+  ];
+
+  const resumeTemplates = [
+    { 
+      id: '1', 
+      name: 'Classic Template', 
+      description: 'Clean and professional',
+      overleafLink: 'https://www.overleaf.com/'
+    },
+    { 
+      id: '2', 
+      name: 'Modern Template', 
+      description: 'Eye-catching design',
+      overleafLink: 'https://www.overleaf.com/'
+    },
+    { 
+      id: '3', 
+      name: 'Technical Template', 
+      description: 'For tech roles',
+      overleafLink: 'https://www.overleaf.com/'
+    },
+    { 
+      id: '4', 
+      name: 'Creative Template', 
+      description: 'For design roles',
+      overleafLink: 'https://www.overleaf.com/'
+    },
   ];
 
   return (
@@ -114,7 +258,12 @@ const CareerHub = () => {
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <Button className="flex-1">Apply Now</Button>
+                    <Button className="flex-1" asChild>
+                      <a href={job.applyLink} target="_blank" rel="noopener noreferrer">
+                        Apply Now
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
                     <Button variant="outline">View Details</Button>
                   </div>
                 </CardContent>
@@ -134,43 +283,35 @@ const CareerHub = () => {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <Card className="cursor-pointer hover:shadow-lg transition-shadow border-2 border-dashed">
-                  <CardContent className="pt-6 text-center">
-                    <div className="h-32 bg-muted rounded mb-4 flex items-center justify-center">
-                      <FileText className="h-12 w-12 text-muted-foreground" />
-                    </div>
-                    <h3 className="font-semibold mb-2">Classic Template</h3>
-                    <p className="text-sm text-muted-foreground mb-4">Clean and professional</p>
-                    <Button size="sm" className="w-full">Use Template</Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="cursor-pointer hover:shadow-lg transition-shadow border-2 border-dashed">
-                  <CardContent className="pt-6 text-center">
-                    <div className="h-32 bg-muted rounded mb-4 flex items-center justify-center">
-                      <FileText className="h-12 w-12 text-muted-foreground" />
-                    </div>
-                    <h3 className="font-semibold mb-2">Modern Template</h3>
-                    <p className="text-sm text-muted-foreground mb-4">Eye-catching design</p>
-                    <Button size="sm" className="w-full">Use Template</Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="cursor-pointer hover:shadow-lg transition-shadow border-2 border-dashed">
-                  <CardContent className="pt-6 text-center">
-                    <div className="h-32 bg-muted rounded mb-4 flex items-center justify-center">
-                      <FileText className="h-12 w-12 text-muted-foreground" />
-                    </div>
-                    <h3 className="font-semibold mb-2">Technical Template</h3>
-                    <p className="text-sm text-muted-foreground mb-4">For tech roles</p>
-                    <Button size="sm" className="w-full">Use Template</Button>
-                  </CardContent>
-                </Card>
+                {resumeTemplates.map((template) => (
+                  <Card key={template.id} className="cursor-pointer hover:shadow-lg transition-shadow border-2 border-dashed">
+                    <CardContent className="pt-6 text-center">
+                      <div className="h-32 bg-muted rounded mb-4 flex items-center justify-center">
+                        <FileText className="h-12 w-12 text-muted-foreground" />
+                      </div>
+                      <h3 className="font-semibold mb-2">{template.name}</h3>
+                      <p className="text-sm text-muted-foreground mb-4">{template.description}</p>
+                      <Button size="sm" className="w-full" asChild>
+                        <a href={template.overleafLink} target="_blank" rel="noopener noreferrer">
+                          Use Template on Overleaf
+                        </a>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
               
               <div className="flex gap-4">
-                <Button className="flex-1">Create New Resume</Button>
-                <Button variant="outline">Upload Existing</Button>
+                <Button className="flex-1" asChild>
+                  <a href="https://www.overleaf.com/" target="_blank" rel="noopener noreferrer">
+                    Create New Resume on Overleaf
+                  </a>
+                </Button>
+                <Button variant="outline" asChild>
+                  <a href="https://www.overleaf.com/" target="_blank" rel="noopener noreferrer">
+                    Upload Existing
+                  </a>
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -202,8 +343,11 @@ const CareerHub = () => {
                         <span>•</span>
                         <span>{interview.time}</span>
                       </div>
-                      <Button size="sm" variant="outline" className="w-full mt-3">
-                        View Details
+                      <Button size="sm" variant="outline" className="w-full mt-3" asChild>
+                        <a href={interview.prampLink} target="_blank" rel="noopener noreferrer">
+                          Practice on Pramp
+                          <ExternalLink className="ml-2 h-3 w-3" />
+                        </a>
                       </Button>
                     </div>
                   ))}
@@ -229,8 +373,11 @@ const CareerHub = () => {
                         </div>
                         <Badge variant="outline">{mock.slots} slots left</Badge>
                       </div>
-                      <Button size="sm" className="w-full mt-3">
-                        Book Slot
+                      <Button size="sm" className="w-full mt-3" asChild>
+                        <a href={mock.prampLink} target="_blank" rel="noopener noreferrer">
+                          Book on Pramp
+                          <ExternalLink className="ml-2 h-3 w-3" />
+                        </a>
                       </Button>
                     </div>
                   ))}
@@ -250,9 +397,33 @@ const CareerHub = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-center text-muted-foreground py-12">
-                No applications yet. Start applying to see your application status here.
-              </p>
+              <div className="space-y-4">
+                {applications.map((application) => (
+                  <div key={application.id} className="p-4 border rounded-lg">
+                    <div className="flex items-start justify-between mb-2">
+                      <div>
+                        <h4 className="font-semibold text-lg">{application.company}</h4>
+                        <p className="text-muted-foreground">{application.position}</p>
+                      </div>
+                      <Badge className={application.statusColor}>{application.status}</Badge>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                      <div>
+                        <span className="text-muted-foreground">Applied: </span>
+                        <span>{application.appliedDate}</span>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground">Next Round: </span>
+                        <span>{application.nextRound}</span>
+                      </div>
+                    </div>
+                    <div className="flex gap-2 mt-3">
+                      <Button size="sm" variant="outline">View Details</Button>
+                      <Button size="sm" variant="outline">Withdraw</Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
