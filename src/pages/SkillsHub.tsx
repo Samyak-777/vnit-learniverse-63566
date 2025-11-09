@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Code2, BookOpen, Lightbulb, Rocket, Copy, Star, Search } from 'lucide-react';
+import { Code2, BookOpen, Lightbulb, Rocket, Copy, Star, Search, ExternalLink } from 'lucide-react';
 
 const SkillsHub = () => {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
@@ -17,7 +17,8 @@ const SkillsHub = () => {
       difficulty: 'Beginner',
       duration: '8 weeks',
       steps: 5,
-      progress: 60
+      progress: 60,
+      gfgLink: 'https://www.geeksforgeeks.org/batch/skill-up-dsa?tab=Chapters'
     },
     { 
       id: '2', 
@@ -26,7 +27,8 @@ const SkillsHub = () => {
       difficulty: 'Intermediate',
       duration: '12 weeks',
       steps: 8,
-      progress: 30
+      progress: 30,
+      gfgLink: 'https://www.geeksforgeeks.org/batch/skill-up-dsa?tab=Chapters'
     },
     { 
       id: '3', 
@@ -35,7 +37,47 @@ const SkillsHub = () => {
       difficulty: 'Advanced',
       duration: '16 weeks',
       steps: 10,
-      progress: 0
+      progress: 0,
+      gfgLink: 'https://www.geeksforgeeks.org/batch/skill-up-dsa?tab=Chapters'
+    },
+  ];
+
+  const learningResources = [
+    {
+      id: '1',
+      title: 'GeeksforGeeks - Complete DSA',
+      type: 'course',
+      platform: 'GeeksforGeeks',
+      isPaid: false,
+      rating: 4.8,
+      url: 'https://www.geeksforgeeks.org/'
+    },
+    {
+      id: '2',
+      title: 'W3Schools Web Tutorials',
+      type: 'tutorials',
+      platform: 'W3Schools',
+      isPaid: false,
+      rating: 4.7,
+      url: 'https://www.w3schools.com/'
+    },
+    {
+      id: '3',
+      title: 'freeCodeCamp Curriculum',
+      type: 'course',
+      platform: 'freeCodeCamp',
+      isPaid: false,
+      rating: 4.9,
+      url: 'https://www.freecodecamp.org/'
+    },
+    {
+      id: '4',
+      title: 'Coursera Specializations',
+      type: 'course',
+      platform: 'Coursera',
+      isPaid: true,
+      rating: 4.8,
+      url: 'https://www.coursera.org/'
     },
   ];
 
@@ -79,7 +121,8 @@ const SkillsHub = () => {
       difficulty: 'Intermediate',
       tech: ['React', 'Node.js', 'MongoDB'],
       duration: '3-4 weeks',
-      rating: 4.7
+      rating: 4.7,
+      githubLink: 'https://github.com/topics/final-year-project'
     },
     {
       id: '2',
@@ -87,34 +130,17 @@ const SkillsHub = () => {
       difficulty: 'Advanced',
       tech: ['WebSockets', 'Redis', 'React'],
       duration: '2-3 weeks',
-      rating: 4.9
-    },
-  ];
-
-  const resources = [
-    {
-      id: '1',
-      title: 'The Complete Python Bootcamp',
-      type: 'course',
-      platform: 'Udemy',
-      isPaid: true,
-      rating: 4.8
-    },
-    {
-      id: '2',
-      title: 'freeCodeCamp - JavaScript',
-      type: 'course',
-      platform: 'freeCodeCamp',
-      isPaid: false,
-      rating: 4.9
+      rating: 4.9,
+      githubLink: 'https://github.com/topics/final-year-project'
     },
     {
       id: '3',
-      title: 'Clean Code by Robert Martin',
-      type: 'book',
-      platform: 'Amazon',
-      isPaid: true,
-      rating: 4.9
+      title: 'Machine Learning Project',
+      difficulty: 'Advanced',
+      tech: ['Python', 'TensorFlow', 'Scikit-learn'],
+      duration: '4-5 weeks',
+      rating: 4.8,
+      githubLink: 'https://github.com/topics/final-year-project'
     },
   ];
 
@@ -178,8 +204,11 @@ const SkillsHub = () => {
                         />
                       </div>
                     </div>
-                    <Button className="w-full">
-                      {roadmap.progress > 0 ? 'Continue Learning' : 'Start Roadmap'}
+                    <Button className="w-full" asChild>
+                      <a href={roadmap.gfgLink} target="_blank" rel="noopener noreferrer">
+                        {roadmap.progress > 0 ? 'Continue Learning' : 'Start Roadmap'}
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </a>
                     </Button>
                   </div>
                 </CardContent>
@@ -195,7 +224,7 @@ const SkillsHub = () => {
             <Button variant="outline">Filter</Button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {resources.map((resource) => (
+            {learningResources.map((resource) => (
               <Card key={resource.id} className="hover:shadow-lg transition-shadow">
                 <CardContent className="pt-6">
                   <div className="flex items-start justify-between mb-4">
@@ -215,7 +244,12 @@ const SkillsHub = () => {
                   </div>
                   <h3 className="font-semibold text-lg mb-2">{resource.title}</h3>
                   <p className="text-sm text-muted-foreground mb-4">Platform: {resource.platform}</p>
-                  <Button className="w-full" variant="outline">View Resource</Button>
+                  <Button className="w-full" variant="outline" asChild>
+                    <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                      View Resource
+                      <ExternalLink className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -297,7 +331,12 @@ const SkillsHub = () => {
                         <span className="font-semibold">{project.rating}</span>
                       </div>
                     </div>
-                    <Button className="w-full">View Project Details</Button>
+                    <Button className="w-full" asChild>
+                      <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                        View Project Details on GitHub
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
