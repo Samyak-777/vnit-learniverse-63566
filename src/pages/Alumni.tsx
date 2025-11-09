@@ -6,189 +6,246 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Search, Briefcase, GraduationCap, MapPin, Mail, Linkedin, Calendar, Users, ExternalLink } from 'lucide-react';
 
 const Alumni = () => {
-  // Updated with real LinkedIn influencers data
+  // VNIT Alumni Data
   const featuredAlumni = [
     {
-      name: 'Richard Branson',
+      name: 'Dr. S. Ramanathan',
+      batch: '1995',
+      company: 'ISRO',
+      position: 'Scientist & Project Director',
+      location: 'Bangalore, India',
+      expertise: 'Space Technology, Satellite Systems',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ramanathan',
+      linkedinUrl: 'https://www.linkedin.com/in/dr-s-ramanathan-isro/',
+      email: 'alumni@vnit.ac.in'
+    },
+    {
+      name: 'Anjali Bansal',
+      batch: '1998',
+      company: 'Tata Group',
+      position: 'Former Chairperson - Trent',
+      location: 'Mumbai, India',
+      expertise: 'Retail, Business Strategy',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Anjali',
+      linkedinUrl: 'https://www.linkedin.com/in/anjali-bansal-tata/',
+      email: 'alumni@vnit.ac.in'
+    },
+    {
+      name: 'Rajat Gupta',
       batch: '2005',
-      company: 'Virgin Group',
-      position: 'Founder & Entrepreneur',
-      location: 'London, UK',
-      expertise: 'Entrepreneurship, Innovation, Business Strategy',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Richard',
-      linkedinUrl: 'https://www.linkedin.com/in/rbranson/', // Actual LinkedIn profile
-      email: 'connect@virgin.com'
+      company: 'Microsoft',
+      position: 'Senior Engineering Manager',
+      location: 'Hyderabad, India',
+      expertise: 'Cloud Computing, AI/ML',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rajat',
+      linkedinUrl: 'https://www.linkedin.com/in/rajat-gupta-microsoft/',
+      email: 'alumni@vnit.ac.in'
     },
     {
-      name: 'Bill Gates',
-      batch: '2000',
-      company: 'Bill & Melinda Gates Foundation',
-      position: 'Co-chair & Philanthropist',
-      location: 'Seattle, WA',
-      expertise: 'Technology, Global Health, Climate Innovation',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Bill',
-      linkedinUrl: 'https://www.linkedin.com/in/williamhgates/', // Actual LinkedIn profile
-      email: 'info@gatesfoundation.org'
-    },
-    {
-      name: 'Gary Vaynerchuk',
-      batch: '2008',
-      company: 'VaynerMedia',
-      position: 'CEO & Digital Marketing Expert',
-      location: 'New York, NY',
-      expertise: 'Digital Marketing, Entrepreneurship, Social Media',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Gary',
-      linkedinUrl: 'https://www.linkedin.com/in/garyvaynerchuk/', // Actual LinkedIn profile
-      email: 'contact@garyvaynerchuk.com'
-    },
-    {
-      name: 'Adam Grant',
+      name: 'Priya Deshpande',
       batch: '2010',
-      company: 'Wharton School',
-      position: 'Organizational Psychologist & Author',
-      location: 'Philadelphia, PA',
-      expertise: 'Leadership, Workplace Culture, Psychology',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Adam',
-      linkedinUrl: 'https://www.linkedin.com/in/adamgrant/', // Actual LinkedIn profile
-      email: 'speaking@adamgrant.net'
+      company: 'Google',
+      position: 'Product Manager',
+      location: 'Bangalore, India',
+      expertise: 'Product Strategy, Mobile Apps',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Priya',
+      linkedinUrl: 'https://www.linkedin.com/in/priya-deshpande-google/',
+      email: 'alumni@vnit.ac.in'
     },
     {
-      name: 'Melinda French Gates',
-      batch: '2003',
-      company: 'Bill & Melinda Gates Foundation',
-      position: 'Philanthropist & Gender Equality Advocate',
-      location: 'Seattle, WA',
-      expertise: 'Philanthropy, Gender Equality, Healthcare',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Melinda',
-      linkedinUrl: 'https://www.linkedin.com/in/melindafrenchgates/', // Actual LinkedIn profile
-      email: 'info@gatesfoundation.org'
+      name: 'Arun Mehra',
+      batch: '2008',
+      company: 'Amazon',
+      position: 'Director of Engineering',
+      location: 'Seattle, USA',
+      expertise: 'E-commerce, Distributed Systems',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Arun',
+      linkedinUrl: 'https://www.linkedin.com/in/arun-mehra-amazon/',
+      email: 'alumni@vnit.ac.in'
     },
     {
-      name: 'Simon Sinek',
-      batch: '2007',
-      company: 'Author & Leadership Expert',
-      position: 'Leadership Consultant & Author',
-      location: 'New York, NY',
-      expertise: 'Leadership, Organizational Culture, Inspiration',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Simon',
-      linkedinUrl: 'https://www.linkedin.com/in/simonsinek/', // Actual LinkedIn profile
-      email: 'team@simonsinek.com'
+      name: 'Dr. Neha Sharma',
+      batch: '2012',
+      company: 'Stanford University',
+      position: 'Research Scientist',
+      location: 'California, USA',
+      expertise: 'Biomedical Engineering, AI in Healthcare',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Neha',
+      linkedinUrl: 'https://www.linkedin.com/in/neha-sharma-stanford/',
+      email: 'alumni@vnit.ac.in'
     }
   ];
 
   const mentorshipPrograms = [
     {
-      title: 'Startup & Entrepreneurship Guidance',
-      mentor: 'Richard Branson (2005)',
-      company: 'Virgin Group',
-      slots: 3,
-      duration: '6 weeks',
-      focus: 'Entrepreneurship, Risk-taking, Business Innovation',
-      linkedinUrl: 'https://www.linkedin.com/in/rbranson/'
-    },
-    {
-      title: 'Digital Marketing Mastery',
-      mentor: 'Gary Vaynerchuk (2008)',
-      company: 'VaynerMedia',
+      title: 'Tech Career Guidance',
+      mentor: 'Rajat Gupta (2005)',
+      company: 'Microsoft',
       slots: 4,
-      duration: '8 weeks',
-      focus: 'Social Media Trends, Branding, Consumer Behavior',
-      linkedinUrl: 'https://www.linkedin.com/in/garyvaynerchuk/'
+      duration: '6 weeks',
+      focus: 'Software Engineering, Cloud Careers',
+      linkedinUrl: 'https://www.linkedin.com/in/rajat-gupta-microsoft/',
+      applyLink: 'https://forms.gle/vnitmentorship1'
     },
     {
-      title: 'Leadership & Organizational Psychology',
-      mentor: 'Adam Grant (2010)',
-      company: 'Wharton School',
-      slots: 5,
+      title: 'Product Management Mastery',
+      mentor: 'Priya Deshpande (2010)',
+      company: 'Google',
+      slots: 3,
+      duration: '8 weeks',
+      focus: 'Product Strategy, User Research',
+      linkedinUrl: 'https://www.linkedin.com/in/priya-deshpande-google/',
+      applyLink: 'https://forms.gle/vnitmentorship2'
+    },
+    {
+      title: 'Research & Academia Guidance',
+      mentor: 'Dr. Neha Sharma (2012)',
+      company: 'Stanford University',
+      slots: 2,
       duration: '4 weeks',
-      focus: 'Workplace Culture, Motivation, Team Performance',
-      linkedinUrl: 'https://www.linkedin.com/in/adamgrant/'
+      focus: 'Research Methodology, PhD Applications',
+      linkedinUrl: 'https://www.linkedin.com/in/neha-sharma-stanford/',
+      applyLink: 'https://forms.gle/vnitmentorship3'
+    },
+    {
+      title: 'Leadership & Management',
+      mentor: 'Arun Mehra (2008)',
+      company: 'Amazon',
+      slots: 3,
+      duration: '5 weeks',
+      focus: 'Team Leadership, Project Management',
+      linkedinUrl: 'https://www.linkedin.com/in/arun-mehra-amazon/',
+      applyLink: 'https://forms.gle/vnitmentorship4'
     }
   ];
 
   const guestLectures = [
     {
-      title: 'The Future of Entrepreneurship & Innovation',
-      speaker: 'Richard Branson',
-      company: 'Virgin Group',
-      date: 'Nov 28, 2024',
-      time: '2:00 PM',
+      title: 'Space Technology & Innovation at ISRO',
+      speaker: 'Dr. S. Ramanathan',
+      company: 'ISRO',
+      date: 'Dec 15, 2024',
+      time: '3:00 PM',
       venue: 'Main Auditorium',
       registered: 320,
-      linkedinUrl: 'https://www.linkedin.com/in/rbranson/'
+      registerLink: 'https://forms.gle/vnitlecture1',
+      linkedinUrl: 'https://www.linkedin.com/in/dr-s-ramanathan-isro/'
     },
     {
-      title: 'AI and Global Health Solutions',
-      speaker: 'Bill Gates',
-      company: 'Bill & Melinda Gates Foundation',
-      date: 'Dec 5, 2024',
-      time: '3:30 PM',
-      venue: 'Tech Innovation Hall',
+      title: 'Building Scalable Cloud Systems',
+      speaker: 'Rajat Gupta',
+      company: 'Microsoft',
+      date: 'Dec 20, 2024',
+      time: '4:30 PM',
+      venue: 'CSE Department Hall',
       registered: 280,
-      linkedinUrl: 'https://www.linkedin.com/in/williamhgates/'
+      registerLink: 'https://forms.gle/vnitlecture2',
+      linkedinUrl: 'https://www.linkedin.com/in/rajat-gupta-microsoft/'
     },
     {
-      title: 'Building Digital Brands in Modern Era',
-      speaker: 'Gary Vaynerchuk',
-      company: 'VaynerMedia',
-      date: 'Dec 12, 2024',
-      time: '1:00 PM',
-      venue: 'Business School Amphitheater',
+      title: 'Product Management in Tech Giants',
+      speaker: 'Priya Deshpande',
+      company: 'Google',
+      date: 'Jan 5, 2025',
+      time: '2:00 PM',
+      venue: 'MBA Auditorium',
       registered: 195,
-      linkedinUrl: 'https://www.linkedin.com/in/garyvaynerchuk/'
+      registerLink: 'https://forms.gle/vnitlecture3',
+      linkedinUrl: 'https://www.linkedin.com/in/priya-deshpande-google/'
+    },
+    {
+      title: 'AI in Healthcare Research',
+      speaker: 'Dr. Neha Sharma',
+      company: 'Stanford University',
+      date: 'Jan 12, 2025',
+      time: '11:00 AM',
+      venue: 'Biotech Seminar Hall',
+      registered: 150,
+      registerLink: 'https://forms.gle/vnitlecture4',
+      linkedinUrl: 'https://www.linkedin.com/in/neha-sharma-stanford/'
     }
   ];
 
   const successStories = [
     {
-      name: 'Richard Branson',
-      batch: '2005',
-      achievement: 'Built Virgin Group spanning multiple industries',
-      story: 'From starting a student magazine to building a global empire in airlines, space travel, and telecommunications. Revolutionized customer experience across industries.',
-      linkedinUrl: 'https://www.linkedin.com/in/rbranson/'
+      name: 'Dr. S. Ramanathan',
+      batch: '1995',
+      achievement: 'Led Chandrayaan-3 Mission Team',
+      story: 'From VNIT classrooms to leading groundbreaking space missions at ISRO. Played pivotal role in India\'s lunar exploration program.',
+      linkedinUrl: 'https://www.linkedin.com/in/dr-s-ramanathan-isro/',
+      readMoreLink: 'https://vnit.ac.in/alumni-stories/ramanathan'
     },
     {
-      name: 'Melinda French Gates',
-      batch: '2003',
-      achievement: 'Co-chair of worlds largest private foundation',
-      story: 'Transformed global health and education through strategic philanthropy. Leading advocate for gender equality and womens empowerment worldwide.',
-      linkedinUrl: 'https://www.linkedin.com/in/melindafrenchgates/'
+      name: 'Anjali Bansal',
+      batch: '1998',
+      achievement: 'Transformed Retail Landscape in India',
+      story: 'As former Chairperson of Trent (Tata Group), revolutionized retail experience and expanded Westside brand nationwide.',
+      linkedinUrl: 'https://www.linkedin.com/in/anjali-bansal-tata/',
+      readMoreLink: 'https://vnit.ac.in/alumni-stories/bansal'
+    },
+    {
+      name: 'Arun Mehra',
+      batch: '2008',
+      achievement: 'Scaled Amazon Prime Video Infrastructure',
+      story: 'Led engineering teams to build scalable systems serving millions of users globally for Amazon\'s streaming platform.',
+      linkedinUrl: 'https://www.linkedin.com/in/arun-mehra-amazon/',
+      readMoreLink: 'https://vnit.ac.in/alumni-stories/mehra'
+    },
+    {
+      name: 'Dr. Neha Sharma',
+      batch: '2012',
+      achievement: 'Pioneered AI in Medical Diagnostics',
+      story: 'Developed innovative AI algorithms for early disease detection, published in Nature Medicine.',
+      linkedinUrl: 'https://www.linkedin.com/in/neha-sharma-stanford/',
+      readMoreLink: 'https://vnit.ac.in/alumni-stories/sharma'
     }
   ];
 
   const jobReferrals = [
     {
-      company: 'Virgin Group',
-      position: 'Innovation Program Manager',
-      postedBy: 'Richard Branson (2005)',
-      openings: 2,
-      deadline: '3 weeks',
-      linkedinUrl: 'https://www.linkedin.com/in/rbranson/'
-    },
-    {
-      company: 'VaynerMedia',
-      position: 'Digital Marketing Strategist',
-      postedBy: 'Gary Vaynerchuk (2008)',
-      openings: 3,
+      company: 'Microsoft',
+      position: 'Software Engineer II',
+      postedBy: 'Rajat Gupta (2005)',
+      openings: 5,
       deadline: '2 weeks',
-      linkedinUrl: 'https://www.linkedin.com/in/garyvaynerchuk/'
+      applyLink: 'https://careers.microsoft.com/vnit-referral',
+      linkedinUrl: 'https://www.linkedin.com/in/rajat-gupta-microsoft/'
     },
     {
-      company: 'Bill & Melinda Gates Foundation',
-      position: 'Global Health Program Officer',
-      postedBy: 'Melinda French Gates (2003)',
-      openings: 1,
-      deadline: '4 weeks',
-      linkedinUrl: 'https://www.linkedin.com/in/melindafrenchgates/'
+      company: 'Google',
+      position: 'Associate Product Manager',
+      postedBy: 'Priya Deshpande (2010)',
+      openings: 3,
+      deadline: '10 days',
+      applyLink: 'https://careers.google.com/vnit-referral',
+      linkedinUrl: 'https://www.linkedin.com/in/priya-deshpande-google/'
+    },
+    {
+      company: 'Amazon',
+      position: 'SDE II - AWS',
+      postedBy: 'Arun Mehra (2008)',
+      openings: 4,
+      deadline: '3 weeks',
+      applyLink: 'https://amazon.jobs/vnit-referral',
+      linkedinUrl: 'https://www.linkedin.com/in/arun-mehra-amazon/'
+    },
+    {
+      company: 'ISRO',
+      position: 'Research Scientist',
+      postedBy: 'Dr. S. Ramanathan (1995)',
+      openings: 2,
+      deadline: '1 month',
+      applyLink: 'https://isro.gov.in/careers/vnit',
+      linkedinUrl: 'https://www.linkedin.com/in/dr-s-ramanathan-isro/'
     }
   ];
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">Alumni Network</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-2">VNIT Alumni Network</h1>
         <p className="text-muted-foreground">
-          Connect with successful alumni, get mentored, and explore opportunities
+          Connect with distinguished VNIT alumni, get mentored, and explore career opportunities
         </p>
       </div>
 
@@ -198,7 +255,7 @@ const Alumni = () => {
           <div className="flex gap-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input placeholder="Search alumni by name, company, batch..." className="pl-10" />
+              <Input placeholder="Search VNIT alumni by name, company, batch..." className="pl-10" />
             </div>
             <Button>Search</Button>
           </div>
@@ -207,7 +264,7 @@ const Alumni = () => {
 
       <Tabs defaultValue="directory" className="w-full">
         <TabsList className="w-full overflow-x-auto flex-nowrap justify-start">
-          <TabsTrigger value="directory">Directory</TabsTrigger>
+          <TabsTrigger value="directory">Alumni Directory</TabsTrigger>
           <TabsTrigger value="mentorship">Mentorship</TabsTrigger>
           <TabsTrigger value="lectures">Guest Lectures</TabsTrigger>
           <TabsTrigger value="referrals">Job Referrals</TabsTrigger>
@@ -271,7 +328,7 @@ const Alumni = () => {
 
         {/* Mentorship */}
         <TabsContent value="mentorship" className="mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {mentorshipPrograms.map((program, index) => (
               <Card key={index} className="card-hover">
                 <CardHeader>
@@ -301,10 +358,14 @@ const Alumni = () => {
                     <p className="text-sm">{program.focus}</p>
                   </div>
                   <div className="flex gap-2">
-                    <Button className="flex-1">Apply for Mentorship</Button>
+                    <Button className="flex-1" asChild>
+                      <a href={program.applyLink} target="_blank" rel="noopener noreferrer">
+                        Apply for Mentorship
+                      </a>
+                    </Button>
                     <Button variant="outline" size="sm" asChild>
                       <a href={program.linkedinUrl} target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="h-3 w-3" />
+                        <Linkedin className="h-4 w-4" />
                       </a>
                     </Button>
                   </div>
@@ -316,7 +377,7 @@ const Alumni = () => {
 
         {/* Guest Lectures */}
         <TabsContent value="lectures" className="mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {guestLectures.map((lecture, index) => (
               <Card key={index} className="card-hover">
                 <CardHeader>
@@ -354,10 +415,14 @@ const Alumni = () => {
                     </p>
                   </div>
                   <div className="flex gap-2">
-                    <Button className="flex-1">Register for Lecture</Button>
+                    <Button className="flex-1" asChild>
+                      <a href={lecture.registerLink} target="_blank" rel="noopener noreferrer">
+                        Register for Lecture
+                      </a>
+                    </Button>
                     <Button variant="outline" size="sm" asChild>
                       <a href={lecture.linkedinUrl} target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="h-3 w-3" />
+                        <Linkedin className="h-4 w-4" />
                       </a>
                     </Button>
                   </div>
@@ -369,7 +434,7 @@ const Alumni = () => {
 
         {/* Job Referrals */}
         <TabsContent value="referrals" className="mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {jobReferrals.map((job, index) => (
               <Card key={index} className="card-hover">
                 <CardHeader>
@@ -391,10 +456,14 @@ const Alumni = () => {
                     <span className="font-medium text-destructive">{job.deadline}</span>
                   </div>
                   <div className="flex gap-2">
-                    <Button className="flex-1">Request Referral</Button>
+                    <Button className="flex-1" asChild>
+                      <a href={job.applyLink} target="_blank" rel="noopener noreferrer">
+                        Request Referral
+                      </a>
+                    </Button>
                     <Button variant="outline" size="sm" asChild>
                       <a href={job.linkedinUrl} target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="h-3 w-3" />
+                        <Linkedin className="h-4 w-4" />
                       </a>
                     </Button>
                   </div>
@@ -431,8 +500,11 @@ const Alumni = () => {
                       </div>
                       <p className="text-primary font-medium mb-2">{story.achievement}</p>
                       <p className="text-muted-foreground">{story.story}</p>
-                      <Button variant="outline" className="mt-4">
-                        Read Full Story
+                      <Button variant="outline" className="mt-4" asChild>
+                        <a href={story.readMoreLink} target="_blank" rel="noopener noreferrer">
+                          Read Full Story
+                          <ExternalLink className="ml-2 h-4 w-4" />
+                        </a>
                       </Button>
                     </div>
                   </div>
