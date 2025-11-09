@@ -15,29 +15,159 @@ import {
   Trophy,
   Upload,
   Users,
+  ExternalLink,
 } from 'lucide-react';
 
 const Career = () => {
   const placements = [
-    { company: 'Google', role: 'Software Engineer', package: '₹45 LPA', deadline: '3 days', applicants: 45 },
-    { company: 'Microsoft', role: 'Data Scientist', package: '₹42 LPA', deadline: '5 days', applicants: 38 },
-    { company: 'Amazon', role: 'SDE-1', package: '₹40 LPA', deadline: '1 week', applicants: 52 },
+    { 
+      company: 'Google', 
+      role: 'Software Engineer', 
+      package: '₹45 LPA', 
+      deadline: '3 days', 
+      applicants: 45,
+      applyLink: 'https://careers.google.com/jobs/'
+    },
+    { 
+      company: 'Microsoft', 
+      role: 'Data Scientist', 
+      package: '₹42 LPA', 
+      deadline: '5 days', 
+      applicants: 38,
+      applyLink: 'https://careers.microsoft.com/'
+    },
+    { 
+      company: 'Amazon', 
+      role: 'SDE-1', 
+      package: '₹40 LPA', 
+      deadline: '1 week', 
+      applicants: 52,
+      applyLink: 'https://www.amazon.jobs/'
+    },
+    { 
+      company: 'Meta', 
+      role: 'Frontend Engineer', 
+      package: '₹38 LPA', 
+      deadline: '2 days', 
+      applicants: 28,
+      applyLink: 'https://www.metacareers.com/'
+    },
+    { 
+      company: 'Apple', 
+      role: 'iOS Developer', 
+      package: '₹50 LPA', 
+      deadline: '4 days', 
+      applicants: 35,
+      applyLink: 'https://www.apple.com/careers/in/'
+    },
+    { 
+      company: 'Netflix', 
+      role: 'Backend Engineer', 
+      package: '₹55 LPA', 
+      deadline: '6 days', 
+      applicants: 22,
+      applyLink: 'https://jobs.netflix.com/'
+    },
   ];
 
   const internships = [
-    { company: 'Meta', role: 'ML Intern', duration: '3 months', stipend: '₹1L/month', deadline: '2 weeks' },
-    { company: 'Adobe', role: 'Frontend Intern', duration: '6 months', stipend: '₹80K/month', deadline: '10 days' },
+    { 
+      company: 'Meta', 
+      role: 'ML Intern', 
+      duration: '3 months', 
+      stipend: '₹1L/month', 
+      deadline: '2 weeks',
+      applyLink: 'https://www.metacareers.com/careerprograms/students'
+    },
+    { 
+      company: 'Adobe', 
+      role: 'Frontend Intern', 
+      duration: '6 months', 
+      stipend: '₹80K/month', 
+      deadline: '10 days',
+      applyLink: 'https://careers.adobe.com/in/interns.html'
+    },
+    { 
+      company: 'Goldman Sachs', 
+      role: 'Quantitative Analyst Intern', 
+      duration: '3 months', 
+      stipend: '₹1.2L/month', 
+      deadline: '1 week',
+      applyLink: 'https://www.goldmansachs.com/careers/students/programs/india.html'
+    },
+    { 
+      company: 'Intel', 
+      role: 'Hardware Engineering Intern', 
+      duration: '4 months', 
+      stipend: '₹90K/month', 
+      deadline: '3 weeks',
+      applyLink: 'https://www.intel.com/content/www/us/en/jobs/locations/india/students.html'
+    },
   ];
 
   const codingContests = [
-    { platform: 'LeetCode', contest: 'Weekly Contest 380', date: 'Tomorrow, 8 PM', participants: 12000 },
-    { platform: 'CodeChef', contest: 'Starters 120', date: 'Wed, 8:30 PM', participants: 8000 },
-    { platform: 'Codeforces', contest: 'Round 920', date: 'Thu, 8:05 PM', participants: 15000 },
+    { 
+      platform: 'LeetCode', 
+      contest: 'Weekly Contest 380', 
+      date: 'Tomorrow, 8 PM', 
+      participants: 12000,
+      registerLink: 'https://leetcode.com/contest/'
+    },
+    { 
+      platform: 'CodeChef', 
+      contest: 'Starters 120', 
+      date: 'Wed, 8:30 PM', 
+      participants: 8000,
+      registerLink: 'https://www.codechef.com/contests'
+    },
+    { 
+      platform: 'Codeforces', 
+      contest: 'Round 920', 
+      date: 'Thu, 8:05 PM', 
+      participants: 15000,
+      registerLink: 'https://codeforces.com/contests'
+    },
+    { 
+      platform: 'HackerRank', 
+      contest: 'Project Euler+ Challenge', 
+      date: 'Sat, 10:00 AM', 
+      participants: 5000,
+      registerLink: 'https://www.hackerrank.com/contests'
+    },
   ];
 
   const mockInterviews = [
-    { interviewer: 'Dr. Amit Kumar', company: 'Ex-Google', date: 'Nov 15, 2024', time: '10:00 AM', slots: 5 },
-    { interviewer: 'Ms. Priya Shah', company: 'Ex-Microsoft', date: 'Nov 18, 2024', time: '2:00 PM', slots: 3 },
+    { 
+      interviewer: 'Dr. Amit Kumar', 
+      company: 'Ex-Google', 
+      date: 'Nov 15, 2024', 
+      time: '10:00 AM', 
+      slots: 5,
+      bookLink: 'https://www.pramp.com/#/'
+    },
+    { 
+      interviewer: 'Ms. Priya Shah', 
+      company: 'Ex-Microsoft', 
+      date: 'Nov 18, 2024', 
+      time: '2:00 PM', 
+      slots: 3,
+      bookLink: 'https://www.pramp.com/#/'
+    },
+    { 
+      interviewer: 'Mr. Rajesh Nair', 
+      company: 'Ex-Amazon', 
+      date: 'Nov 20, 2024', 
+      time: '11:00 AM', 
+      slots: 7,
+      bookLink: 'https://www.pramp.com/#/'
+    },
+  ];
+
+  const resumeTemplates = [
+    { name: 'Professional', link: 'https://www.overleaf.com/' },
+    { name: 'Modern', link: 'https://www.overleaf.com/' },
+    { name: 'Technical', link: 'https://www.overleaf.com/' },
+    { name: 'Creative', link: 'https://www.overleaf.com/' },
   ];
 
   return (
@@ -87,7 +217,12 @@ const Career = () => {
                     </span>
                     <span className="font-medium">{placement.applicants} students</span>
                   </div>
-                  <Button className="w-full">Apply Now</Button>
+                  <Button className="w-full" asChild>
+                    <a href={placement.applyLink} target="_blank" rel="noopener noreferrer">
+                      Apply Now
+                      <ExternalLink className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -117,7 +252,12 @@ const Career = () => {
                     <span className="text-muted-foreground">Deadline</span>
                     <span className="font-medium text-destructive">{internship.deadline}</span>
                   </div>
-                  <Button className="w-full">Apply for Internship</Button>
+                  <Button className="w-full" asChild>
+                    <a href={internship.applyLink} target="_blank" rel="noopener noreferrer">
+                      Apply for Internship
+                      <ExternalLink className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -167,9 +307,12 @@ const Career = () => {
                     rows={6}
                   />
                 </div>
-                <Button className="w-full">
-                  <Download className="h-4 w-4 mr-2" />
-                  Generate Resume PDF
+                <Button className="w-full" asChild>
+                  <a href="https://www.overleaf.com/" target="_blank" rel="noopener noreferrer">
+                    <Download className="h-4 w-4 mr-2" />
+                    Generate Resume on Overleaf
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -180,18 +323,13 @@ const Career = () => {
                   <CardTitle className="text-lg">Resume Templates</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  <Button variant="outline" className="w-full justify-start">
-                    📄 Professional
-                  </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    📄 Modern
-                  </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    📄 Technical
-                  </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    📄 Creative
-                  </Button>
+                  {resumeTemplates.map((template, index) => (
+                    <Button key={index} variant="outline" className="w-full justify-start" asChild>
+                      <a href={template.link} target="_blank" rel="noopener noreferrer">
+                        📄 {template.name}
+                      </a>
+                    </Button>
+                  ))}
                 </CardContent>
               </Card>
 
@@ -200,13 +338,17 @@ const Career = () => {
                   <CardTitle className="text-lg">Resources</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  <Button variant="ghost" className="w-full justify-start">
-                    <FileText className="h-4 w-4 mr-2" />
-                    Resume Tips
+                  <Button variant="ghost" className="w-full justify-start" asChild>
+                    <a href="https://www.overleaf.com/" target="_blank" rel="noopener noreferrer">
+                      <FileText className="h-4 w-4 mr-2" />
+                      Resume Tips
+                    </a>
                   </Button>
-                  <Button variant="ghost" className="w-full justify-start">
-                    <Upload className="h-4 w-4 mr-2" />
-                    Sample Resumes
+                  <Button variant="ghost" className="w-full justify-start" asChild>
+                    <a href="https://www.overleaf.com/" target="_blank" rel="noopener noreferrer">
+                      <Upload className="h-4 w-4 mr-2" />
+                      Sample Resumes
+                    </a>
                   </Button>
                 </CardContent>
               </Card>
@@ -243,9 +385,11 @@ const Career = () => {
                             </span>
                           </div>
                         </div>
-                        <Button>
-                          <Trophy className="h-4 w-4 mr-2" />
-                          Register
+                        <Button asChild>
+                          <a href={contest.registerLink} target="_blank" rel="noopener noreferrer">
+                            <Trophy className="h-4 w-4 mr-2" />
+                            Register
+                          </a>
                         </Button>
                       </div>
                     </CardContent>
@@ -312,7 +456,11 @@ const Career = () => {
                             <Badge variant="secondary">{interview.slots} slots left</Badge>
                           </div>
                         </div>
-                        <Button>Book Slot</Button>
+                        <Button asChild>
+                          <a href={interview.bookLink} target="_blank" rel="noopener noreferrer">
+                            Book on Pramp
+                          </a>
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
@@ -326,21 +474,29 @@ const Career = () => {
               <CardTitle>Interview Preparation Resources</CardTitle>
             </CardHeader>
             <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <Button variant="outline" className="justify-start">
-                <FileText className="h-4 w-4 mr-2" />
-                Common Interview Questions
+              <Button variant="outline" className="justify-start" asChild>
+                <a href="https://www.pramp.com/#/" target="_blank" rel="noopener noreferrer">
+                  <FileText className="h-4 w-4 mr-2" />
+                  Common Interview Questions
+                </a>
               </Button>
-              <Button variant="outline" className="justify-start">
-                <Code className="h-4 w-4 mr-2" />
-                Coding Interview Patterns
+              <Button variant="outline" className="justify-start" asChild>
+                <a href="https://www.pramp.com/#/" target="_blank" rel="noopener noreferrer">
+                  <Code className="h-4 w-4 mr-2" />
+                  Coding Interview Patterns
+                </a>
               </Button>
-              <Button variant="outline" className="justify-start">
-                <Briefcase className="h-4 w-4 mr-2" />
-                Behavioral Questions
+              <Button variant="outline" className="justify-start" asChild>
+                <a href="https://www.pramp.com/#/" target="_blank" rel="noopener noreferrer">
+                  <Briefcase className="h-4 w-4 mr-2" />
+                  Behavioral Questions
+                </a>
               </Button>
-              <Button variant="outline" className="justify-start">
-                <TrendingUp className="h-4 w-4 mr-2" />
-                System Design Basics
+              <Button variant="outline" className="justify-start" asChild>
+                <a href="https://www.pramp.com/#/" target="_blank" rel="noopener noreferrer">
+                  <TrendingUp className="h-4 w-4 mr-2" />
+                  System Design Basics
+                </a>
               </Button>
             </CardContent>
           </Card>
