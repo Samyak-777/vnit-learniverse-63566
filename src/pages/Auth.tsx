@@ -28,6 +28,7 @@ const Auth = () => {
   const [signupPassword, setSignupPassword] = useState("");
   const [signupDepartment, setSignupDepartment] = useState("");
   const [signupYear, setSignupYear] = useState("");
+  const [signupRole, setSignupRole] = useState<UserRole>("student");
 
   useEffect(() => {
     // Check if user is already logged in
@@ -130,12 +131,12 @@ const Auth = () => {
           console.error("Profile update error:", profileError);
         }
 
-        // Assign default student role - admins must be assigned by existing admins
-        const { error: roleError } = await (supabase as any)
+        // Assign selected role - admins must be assigned by existing admins
+        const { error: roleError} = await (supabase as any)
           .from('user_roles')
           .insert({
             user_id: authData.user.id,
-            role: 'student',
+            role: signupRole === 'admin' ? 'student' : signupRole, // Prevent self-admin assignment
           });
 
         if (roleError) {
@@ -264,19 +265,33 @@ const Auth = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="signup-year">Year</Label>
-                  <Select value={signupYear} onValueChange={setSignupYear}>
-                    <SelectTrigger id="signup-year">
-                      <SelectValue placeholder="Select year" />
+                  <Label htmlFor="signup-role">I am a</Label>
+                  <Select value={signupRole} onValueChange={(value) => setSignupRole(value as UserRole)}>
+                    <SelectTrigger id="signup-role">
+                      <SelectValue placeholder="Select role" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="1">1st Year</SelectItem>
-                      <SelectItem value="2">2nd Year</SelectItem>
-                      <SelectItem value="3">3rd Year</SelectItem>
-                      <SelectItem value="4">4th Year</SelectItem>
+                      <SelectItem value="student">Student</SelectItem>
+                      <SelectItem value="professor">Faculty/Professor</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
+                {signupRole === 'student' && (
+                  <div className="space-y-2">
+                    <Label htmlFor="signup-year">Year</Label>
+                    <Select value={signupYear} onValueChange={setSignupYear}>
+                      <SelectTrigger id="signup-year">
+                        <SelectValue placeholder="Select year" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1">1st Year</SelectItem>
+                        <SelectItem value="2">2nd Year</SelectItem>
+                        <SelectItem value="3">3rd Year</SelectItem>
+                        <SelectItem value="4">4th Year</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
                 <Button type="submit" className="w-full" disabled={isLoading}>
                   {isLoading ? (
                     <>

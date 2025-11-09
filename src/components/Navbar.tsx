@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
-import { Bell, Search, Menu, X, User, LogOut } from 'lucide-react';
+import { Bell, Menu, X, User, LogOut } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
+import { GlobalSearchBar } from './GlobalSearchBar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,9 +26,10 @@ const Navbar = () => {
     { path: '/', label: 'Home' },
     { path: '/dashboard', label: 'Dashboard' },
     { path: '/academics', label: 'Academics' },
-    { path: '/skills', label: 'Skills' },
-    { path: '/blogs', label: 'Blogs' },
-    { path: '/forums', label: 'Forums' },
+    { path: '/skills-hub', label: 'Skills' },
+    { path: '/career-hub', label: 'Career' },
+    { path: '/alumni-network', label: 'Alumni' },
+    { path: '/campus-life', label: 'Campus' },
   ];
   
   const unreadCount = 0; // Will be implemented with notifications system
@@ -81,10 +83,8 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                {/* Search Button */}
-                <Button variant="ghost" size="icon" className="hidden md:flex">
-                  <Search className="h-5 w-5" />
-                </Button>
+                {/* Global Search */}
+                <GlobalSearchBar />
 
                 {/* Notifications */}
                 <DropdownMenu>

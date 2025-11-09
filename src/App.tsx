@@ -15,12 +15,14 @@ import Forums from "./pages/Forums";
 import Profile from "./pages/Profile";
 import Admin from "./pages/Admin";
 import Professor from "./pages/Professor";
+import ProfessorDashboard from "./pages/ProfessorDashboard";
 import Auth from "./pages/Auth";
 import Reports from "./pages/Reports";
 import QuizCreator from "./pages/QuizCreator";
-import Career from "./pages/Career";
-import Campus from "./pages/Campus";
-import Alumni from "./pages/Alumni";
+import SkillsHub from "./pages/SkillsHub";
+import CareerHub from "./pages/CareerHub";
+import AlumniNetwork from "./pages/AlumniNetwork";
+import CampusLife from "./pages/CampusLife";
 import Research from "./pages/Research";
 import NotFound from "./pages/NotFound";
 
@@ -67,6 +69,11 @@ const App = () => (
                   <Professor />
                 </ProtectedRoute>
               } />
+              <Route path="/professor-dashboard" element={
+                <ProtectedRoute requiredRole="professor">
+                  <ProfessorDashboard />
+                </ProtectedRoute>
+              } />
               <Route path="/reports" element={
                 <ProtectedRoute requiredRole="admin">
                   <Reports />
@@ -77,9 +84,10 @@ const App = () => (
                   <QuizCreator />
                 </ProtectedRoute>
               } />
-              <Route path="/career" element={<Career />} />
-              <Route path="/campus" element={<Campus />} />
-              <Route path="/alumni" element={<Alumni />} />
+              <Route path="/skills-hub" element={<SkillsHub />} />
+              <Route path="/career-hub" element={<CareerHub />} />
+              <Route path="/alumni-network" element={<AlumniNetwork />} />
+              <Route path="/campus-life" element={<CampusLife />} />
               <Route path="/research" element={<Research />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

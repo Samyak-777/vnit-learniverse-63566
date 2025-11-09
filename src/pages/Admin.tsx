@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -75,20 +76,48 @@ const Admin = () => {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle>User Management</CardTitle>
-                <Button>Add New User</Button>
+                <div className="flex gap-2">
+                  <Button variant="outline">Assign Roles</Button>
+                  <Button>Add New User</Button>
+                </div>
               </div>
             </CardHeader>
             <CardContent>
-              <div className="mb-4">
-                <Input placeholder="Search users..." />
+              <div className="mb-4 flex gap-4">
+                <Input placeholder="Search users..." className="max-w-md" />
+                <Select>
+                  <SelectTrigger className="w-40">
+                    <SelectValue placeholder="Filter by Role" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-popover">
+                    <SelectItem value="all">All Roles</SelectItem>
+                    <SelectItem value="student">Students</SelectItem>
+                    <SelectItem value="professor">Faculty</SelectItem>
+                    <SelectItem value="admin">Admins</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Select>
+                  <SelectTrigger className="w-48">
+                    <SelectValue placeholder="Filter by Department" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-popover">
+                    {departments.map((dept) => (
+                      <SelectItem key={dept.id} value={dept.id}>
+                        {dept.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               <Table>
                 <TableHeader>
                   <TableRow>
                     <TableHead>Name</TableHead>
                     <TableHead>Email</TableHead>
+                    <TableHead>Role</TableHead>
                     <TableHead>Department</TableHead>
                     <TableHead>Joined</TableHead>
+                    <TableHead>Status</TableHead>
                     <TableHead>Actions</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -97,15 +126,24 @@ const Admin = () => {
                     <TableRow key={user.id}>
                       <TableCell className="font-medium">{user.name}</TableCell>
                       <TableCell>{user.email}</TableCell>
+                      <TableCell>
+                        <Badge variant="outline">Student</Badge>
+                      </TableCell>
                       <TableCell>{user.department}</TableCell>
                       <TableCell>{user.joined}</TableCell>
+                      <TableCell>
+                        <Badge className="bg-green-500">Active</Badge>
+                      </TableCell>
                       <TableCell>
                         <div className="flex gap-2">
                           <Button size="sm" variant="outline">
                             Edit
                           </Button>
                           <Button size="sm" variant="outline">
-                            Delete
+                            Manage Roles
+                          </Button>
+                          <Button size="sm" variant="outline" className="text-destructive">
+                            Reset Password
                           </Button>
                         </div>
                       </TableCell>
@@ -214,10 +252,44 @@ const Admin = () => {
         <TabsContent value="materials" className="mt-6">
           <Card>
             <CardHeader>
-              <CardTitle>Uploaded Materials</CardTitle>
+              <div className="flex items-center justify-between">
+                <CardTitle>Uploaded Materials</CardTitle>
+                <div className="flex gap-2">
+                  <Input placeholder="Search materials..." className="w-64" />
+                  <Button variant="outline">Filter</Button>
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Material list and management coming soon...</p>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Title</TableHead>
+                    <TableHead>Course</TableHead>
+                    <TableHead>Type</TableHead>
+                    <TableHead>Uploaded By</TableHead>
+                    <TableHead>Date</TableHead>
+                    <TableHead>Downloads</TableHead>
+                    <TableHead>Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">Data Structures Notes</TableCell>
+                    <TableCell>CS301</TableCell>
+                    <TableCell><Badge variant="outline">PDF</Badge></TableCell>
+                    <TableCell>Prof. Kumar</TableCell>
+                    <TableCell>2025-11-05</TableCell>
+                    <TableCell>245</TableCell>
+                    <TableCell>
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline">View</Button>
+                        <Button size="sm" variant="outline" className="text-destructive">Delete</Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </CardContent>
           </Card>
         </TabsContent>
@@ -226,10 +298,26 @@ const Admin = () => {
         <TabsContent value="moderation" className="mt-6">
           <Card>
             <CardHeader>
-              <CardTitle>Content Moderation</CardTitle>
+              <CardTitle>Content Moderation Queue</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">Moderation queue and flagged content coming soon...</p>
+              <div className="space-y-4">
+                <div className="p-4 border rounded-lg">
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <h4 className="font-semibold mb-1">Forum Post: "Help with Assignment"</h4>
+                      <p className="text-sm text-muted-foreground">Posted by: Rahul Sharma</p>
+                    </div>
+                    <Badge variant="secondary">Pending Review</Badge>
+                  </div>
+                  <p className="text-sm mb-4">Content preview: I need help with the DSA assignment...</p>
+                  <div className="flex gap-2">
+                    <Button size="sm" className="bg-green-500">Approve</Button>
+                    <Button size="sm" variant="destructive">Reject</Button>
+                    <Button size="sm" variant="outline">View Full Content</Button>
+                  </div>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
