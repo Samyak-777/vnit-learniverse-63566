@@ -20,6 +20,20 @@ const Skills = () => {
 
   const selectedSkill = skillId ? skills.find((s) => s.id === skillId) : null;
 
+  // Popular learning websites for resources
+  const learningWebsites = {
+    free: [
+      { id: 'gfg-free', title: 'GeeksforGeeks - Free Content', platform: 'GeeksforGeeks', url: 'https://www.geeksforgeeks.org/', type: 'Tutorials & Articles' },
+      { id: 'w3schools', title: 'W3Schools Tutorials', platform: 'W3Schools', url: 'https://www.w3schools.com/', type: 'Interactive Tutorials' },
+      { id: 'freecodecamp', title: 'freeCodeCamp', platform: 'freeCodeCamp', url: 'https://www.freecodecamp.org/', type: 'Interactive Courses' }
+    ],
+    paid: [
+      { id: 'gfg-paid', title: 'GeeksforGeeks Courses', platform: 'GeeksforGeeks', url: 'https://www.geeksforgeeks.org/courses', type: 'Structured Courses' },
+      { id: 'coursera', title: 'Coursera Specializations', platform: 'Coursera', url: 'https://www.coursera.org/', type: 'University Courses' },
+      { id: 'udemy', title: 'Udemy Courses', platform: 'Udemy', url: 'https://www.udemy.com/', type: 'Video Courses' }
+    ]
+  };
+
   if (selectedSkill) {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -68,6 +82,12 @@ const Skills = () => {
                     ))}
                   </div>
                 </div>
+                <Button className="w-full mt-4" asChild>
+                  <a href="https://www.geeksforgeeks.org/batch/skill-up-dsa?tab=Chapters" target="_blank" rel="noopener noreferrer">
+                    Continue Learning on GeeksforGeeks
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
               </CardContent>
             </Card>
 
@@ -80,7 +100,7 @@ const Skills = () => {
                 <Tabs defaultValue="free">
                   <TabsList className="w-full">
                     <TabsTrigger value="free" className="flex-1">
-                      Free Courses
+                      Free Resources
                     </TabsTrigger>
                     <TabsTrigger value="paid" className="flex-1">
                       Paid Courses
@@ -88,52 +108,48 @@ const Skills = () => {
                   </TabsList>
                   <TabsContent value="free" className="mt-4">
                     <div className="space-y-3">
-                      {selectedSkill.resources
-                        .filter((r) => !r.isPaid)
-                        .map((resource) => (
-                          <Card key={resource.id} className="card-hover">
-                            <CardContent className="p-4">
-                              <div className="flex items-start justify-between gap-4">
-                                <div>
-                                  <h4 className="font-semibold mb-1">{resource.title}</h4>
-                                  <p className="text-sm text-muted-foreground">
-                                    {resource.platform} • {resource.type}
-                                  </p>
-                                </div>
-                                <Button size="sm" variant="outline" asChild>
-                                  <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                                    <ExternalLink className="h-4 w-4" />
-                                  </a>
-                                </Button>
+                      {learningWebsites.free.map((resource) => (
+                        <Card key={resource.id} className="card-hover">
+                          <CardContent className="p-4">
+                            <div className="flex items-start justify-between gap-4">
+                              <div>
+                                <h4 className="font-semibold mb-1">{resource.title}</h4>
+                                <p className="text-sm text-muted-foreground">
+                                  {resource.platform} • {resource.type}
+                                </p>
                               </div>
-                            </CardContent>
-                          </Card>
-                        ))}
+                              <Button size="sm" variant="outline" asChild>
+                                <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                                  <ExternalLink className="h-4 w-4" />
+                                </a>
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
                     </div>
                   </TabsContent>
                   <TabsContent value="paid" className="mt-4">
                     <div className="space-y-3">
-                      {selectedSkill.resources
-                        .filter((r) => r.isPaid)
-                        .map((resource) => (
-                          <Card key={resource.id} className="card-hover">
-                            <CardContent className="p-4">
-                              <div className="flex items-start justify-between gap-4">
-                                <div>
-                                  <h4 className="font-semibold mb-1">{resource.title}</h4>
-                                  <p className="text-sm text-muted-foreground">
-                                    {resource.platform} • {resource.type}
-                                  </p>
-                                </div>
-                                <Button size="sm" variant="outline" asChild>
-                                  <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                                    <ExternalLink className="h-4 w-4" />
-                                  </a>
-                                </Button>
+                      {learningWebsites.paid.map((resource) => (
+                        <Card key={resource.id} className="card-hover">
+                          <CardContent className="p-4">
+                            <div className="flex items-start justify-between gap-4">
+                              <div>
+                                <h4 className="font-semibold mb-1">{resource.title}</h4>
+                                <p className="text-sm text-muted-foreground">
+                                  {resource.platform} • {resource.type}
+                                </p>
                               </div>
-                            </CardContent>
-                          </Card>
-                        ))}
+                              <Button size="sm" variant="outline" asChild>
+                                <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                                  <ExternalLink className="h-4 w-4" />
+                                </a>
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
                     </div>
                   </TabsContent>
                 </Tabs>
@@ -175,14 +191,20 @@ const Skills = () => {
                 <CardTitle className="text-lg">Practice Resources</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
-                <Button variant="outline" className="w-full justify-start">
-                  📝 Coding Practice Sheets
+                <Button variant="outline" className="w-full justify-start" asChild>
+                  <a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener noreferrer">
+                    📝 Coding Practice Sheets
+                  </a>
                 </Button>
-                <Button variant="outline" className="w-full justify-start">
-                  💡 Project Ideas
+                <Button variant="outline" className="w-full justify-start" asChild>
+                  <a href="https://github.com/topics/final-year-project" target="_blank" rel="noopener noreferrer">
+                    💡 Project Ideas
+                  </a>
                 </Button>
-                <Button variant="outline" className="w-full justify-start">
-                  🎯 Interview Questions
+                <Button variant="outline" className="w-full justify-start" asChild>
+                  <a href="https://www.geeksforgeeks.org/company-interview-corner/" target="_blank" rel="noopener noreferrer">
+                    🎯 Interview Questions
+                  </a>
                 </Button>
               </CardContent>
             </Card>
