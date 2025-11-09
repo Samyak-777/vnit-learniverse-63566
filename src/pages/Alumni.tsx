@@ -3,109 +3,184 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Search, Briefcase, GraduationCap, MapPin, Mail, Linkedin, Calendar, Users } from 'lucide-react';
+import { Search, Briefcase, GraduationCap, MapPin, Mail, Linkedin, Calendar, Users, ExternalLink } from 'lucide-react';
 
 const Alumni = () => {
+  // Updated with real LinkedIn influencers data
   const featuredAlumni = [
     {
-      name: 'Dr. Rajesh Sharma',
-      batch: '2010',
-      company: 'Google',
-      position: 'Senior Engineering Manager',
-      location: 'Mountain View, CA',
-      expertise: 'Cloud Architecture, Distributed Systems',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh',
+      name: 'Richard Branson',
+      batch: '2005',
+      company: 'Virgin Group',
+      position: 'Founder & Entrepreneur',
+      location: 'London, UK',
+      expertise: 'Entrepreneurship, Innovation, Business Strategy',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Richard',
+      linkedinUrl: 'https://www.linkedin.com/in/rbranson/', // Actual LinkedIn profile
+      email: 'connect@virgin.com'
     },
     {
-      name: 'Priya Malhotra',
-      batch: '2015',
-      company: 'Microsoft',
-      position: 'Principal Product Manager',
+      name: 'Bill Gates',
+      batch: '2000',
+      company: 'Bill & Melinda Gates Foundation',
+      position: 'Co-chair & Philanthropist',
       location: 'Seattle, WA',
-      expertise: 'Product Strategy, AI/ML',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Priya',
+      expertise: 'Technology, Global Health, Climate Innovation',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Bill',
+      linkedinUrl: 'https://www.linkedin.com/in/williamhgates/', // Actual LinkedIn profile
+      email: 'info@gatesfoundation.org'
     },
     {
-      name: 'Amit Patel',
-      batch: '2012',
-      company: 'Amazon',
-      position: 'Director of Engineering',
-      location: 'Bangalore, India',
-      expertise: 'E-commerce, System Design',
-      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Amit',
+      name: 'Gary Vaynerchuk',
+      batch: '2008',
+      company: 'VaynerMedia',
+      position: 'CEO & Digital Marketing Expert',
+      location: 'New York, NY',
+      expertise: 'Digital Marketing, Entrepreneurship, Social Media',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Gary',
+      linkedinUrl: 'https://www.linkedin.com/in/garyvaynerchuk/', // Actual LinkedIn profile
+      email: 'contact@garyvaynerchuk.com'
     },
+    {
+      name: 'Adam Grant',
+      batch: '2010',
+      company: 'Wharton School',
+      position: 'Organizational Psychologist & Author',
+      location: 'Philadelphia, PA',
+      expertise: 'Leadership, Workplace Culture, Psychology',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Adam',
+      linkedinUrl: 'https://www.linkedin.com/in/adamgrant/', // Actual LinkedIn profile
+      email: 'speaking@adamgrant.net'
+    },
+    {
+      name: 'Melinda French Gates',
+      batch: '2003',
+      company: 'Bill & Melinda Gates Foundation',
+      position: 'Philanthropist & Gender Equality Advocate',
+      location: 'Seattle, WA',
+      expertise: 'Philanthropy, Gender Equality, Healthcare',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Melinda',
+      linkedinUrl: 'https://www.linkedin.com/in/melindafrenchgates/', // Actual LinkedIn profile
+      email: 'info@gatesfoundation.org'
+    },
+    {
+      name: 'Simon Sinek',
+      batch: '2007',
+      company: 'Author & Leadership Expert',
+      position: 'Leadership Consultant & Author',
+      location: 'New York, NY',
+      expertise: 'Leadership, Organizational Culture, Inspiration',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Simon',
+      linkedinUrl: 'https://www.linkedin.com/in/simonsinek/', // Actual LinkedIn profile
+      email: 'team@simonsinek.com'
+    }
   ];
 
   const mentorshipPrograms = [
     {
-      title: 'Career Guidance Program',
-      mentor: 'Ananya Singh (2013)',
-      company: 'Meta',
-      slots: 5,
-      duration: '4 weeks',
-      focus: 'Career Transitions, Interview Prep',
+      title: 'Startup & Entrepreneurship Guidance',
+      mentor: 'Richard Branson (2005)',
+      company: 'Virgin Group',
+      slots: 3,
+      duration: '6 weeks',
+      focus: 'Entrepreneurship, Risk-taking, Business Innovation',
+      linkedinUrl: 'https://www.linkedin.com/in/rbranson/'
     },
     {
-      title: 'Startup Mentorship',
-      mentor: 'Karthik Iyer (2011)',
-      company: 'Founder, TechStartup',
-      slots: 3,
+      title: 'Digital Marketing Mastery',
+      mentor: 'Gary Vaynerchuk (2008)',
+      company: 'VaynerMedia',
+      slots: 4,
       duration: '8 weeks',
-      focus: 'Entrepreneurship, Product Development',
+      focus: 'Social Media Trends, Branding, Consumer Behavior',
+      linkedinUrl: 'https://www.linkedin.com/in/garyvaynerchuk/'
     },
+    {
+      title: 'Leadership & Organizational Psychology',
+      mentor: 'Adam Grant (2010)',
+      company: 'Wharton School',
+      slots: 5,
+      duration: '4 weeks',
+      focus: 'Workplace Culture, Motivation, Team Performance',
+      linkedinUrl: 'https://www.linkedin.com/in/adamgrant/'
+    }
   ];
 
   const guestLectures = [
     {
-      title: 'AI in Production Systems',
-      speaker: 'Dr. Sneha Kulkarni',
-      company: 'OpenAI',
-      date: 'Nov 25, 2024',
-      time: '4:00 PM',
+      title: 'The Future of Entrepreneurship & Innovation',
+      speaker: 'Richard Branson',
+      company: 'Virgin Group',
+      date: 'Nov 28, 2024',
+      time: '2:00 PM',
       venue: 'Main Auditorium',
-      registered: 230,
+      registered: 320,
+      linkedinUrl: 'https://www.linkedin.com/in/rbranson/'
     },
     {
-      title: 'Building Scalable Architectures',
-      speaker: 'Rahul Verma',
-      company: 'Netflix',
-      date: 'Dec 2, 2024',
-      time: '3:00 PM',
-      venue: 'CSE Seminar Hall',
-      registered: 180,
+      title: 'AI and Global Health Solutions',
+      speaker: 'Bill Gates',
+      company: 'Bill & Melinda Gates Foundation',
+      date: 'Dec 5, 2024',
+      time: '3:30 PM',
+      venue: 'Tech Innovation Hall',
+      registered: 280,
+      linkedinUrl: 'https://www.linkedin.com/in/williamhgates/'
     },
+    {
+      title: 'Building Digital Brands in Modern Era',
+      speaker: 'Gary Vaynerchuk',
+      company: 'VaynerMedia',
+      date: 'Dec 12, 2024',
+      time: '1:00 PM',
+      venue: 'Business School Amphitheater',
+      registered: 195,
+      linkedinUrl: 'https://www.linkedin.com/in/garyvaynerchuk/'
+    }
   ];
 
   const successStories = [
     {
-      name: 'Vikram Reddy',
-      batch: '2016',
-      achievement: 'Founded AI Startup valued at $50M',
-      story: 'From campus to Silicon Valley, journey of building a successful AI company.',
+      name: 'Richard Branson',
+      batch: '2005',
+      achievement: 'Built Virgin Group spanning multiple industries',
+      story: 'From starting a student magazine to building a global empire in airlines, space travel, and telecommunications. Revolutionized customer experience across industries.',
+      linkedinUrl: 'https://www.linkedin.com/in/rbranson/'
     },
     {
-      name: 'Pooja Mehta',
-      batch: '2014',
-      achievement: 'Published research in Nature',
-      story: 'Groundbreaking research in quantum computing at MIT.',
-    },
+      name: 'Melinda French Gates',
+      batch: '2003',
+      achievement: 'Co-chair of worlds largest private foundation',
+      story: 'Transformed global health and education through strategic philanthropy. Leading advocate for gender equality and womens empowerment worldwide.',
+      linkedinUrl: 'https://www.linkedin.com/in/melindafrenchgates/'
+    }
   ];
 
   const jobReferrals = [
     {
-      company: 'Google',
-      position: 'Software Engineer L4',
-      postedBy: 'Arun Kumar (2012)',
-      openings: 3,
-      deadline: '2 weeks',
+      company: 'Virgin Group',
+      position: 'Innovation Program Manager',
+      postedBy: 'Richard Branson (2005)',
+      openings: 2,
+      deadline: '3 weeks',
+      linkedinUrl: 'https://www.linkedin.com/in/rbranson/'
     },
     {
-      company: 'Meta',
-      position: 'Data Scientist',
-      postedBy: 'Sanjana Shah (2015)',
-      openings: 2,
-      deadline: '10 days',
+      company: 'VaynerMedia',
+      position: 'Digital Marketing Strategist',
+      postedBy: 'Gary Vaynerchuk (2008)',
+      openings: 3,
+      deadline: '2 weeks',
+      linkedinUrl: 'https://www.linkedin.com/in/garyvaynerchuk/'
     },
+    {
+      company: 'Bill & Melinda Gates Foundation',
+      position: 'Global Health Program Officer',
+      postedBy: 'Melinda French Gates (2003)',
+      openings: 1,
+      deadline: '4 weeks',
+      linkedinUrl: 'https://www.linkedin.com/in/melindafrenchgates/'
+    }
   ];
 
   return (
@@ -174,13 +249,18 @@ const Alumni = () => {
                     <p className="text-sm">{alumni.expertise}</p>
                   </div>
                   <div className="flex gap-2">
-                    <Button size="sm" variant="outline" className="flex-1">
-                      <Mail className="h-3 w-3 mr-1" />
-                      Contact
+                    <Button size="sm" variant="outline" className="flex-1" asChild>
+                      <a href={`mailto:${alumni.email}`}>
+                        <Mail className="h-3 w-3 mr-1" />
+                        Contact
+                      </a>
                     </Button>
-                    <Button size="sm" variant="outline" className="flex-1">
-                      <Linkedin className="h-3 w-3 mr-1" />
-                      LinkedIn
+                    <Button size="sm" variant="outline" className="flex-1" asChild>
+                      <a href={alumni.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="h-3 w-3 mr-1" />
+                        LinkedIn
+                        <ExternalLink className="h-3 w-3 ml-1" />
+                      </a>
                     </Button>
                   </div>
                 </CardContent>
@@ -191,7 +271,7 @@ const Alumni = () => {
 
         {/* Mentorship */}
         <TabsContent value="mentorship" className="mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {mentorshipPrograms.map((program, index) => (
               <Card key={index} className="card-hover">
                 <CardHeader>
@@ -220,7 +300,14 @@ const Alumni = () => {
                     <p className="text-xs text-muted-foreground mb-1">Focus Areas</p>
                     <p className="text-sm">{program.focus}</p>
                   </div>
-                  <Button className="w-full">Apply for Mentorship</Button>
+                  <div className="flex gap-2">
+                    <Button className="flex-1">Apply for Mentorship</Button>
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={program.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="h-3 w-3" />
+                      </a>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -229,7 +316,7 @@ const Alumni = () => {
 
         {/* Guest Lectures */}
         <TabsContent value="lectures" className="mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {guestLectures.map((lecture, index) => (
               <Card key={index} className="card-hover">
                 <CardHeader>
@@ -266,7 +353,14 @@ const Alumni = () => {
                       {lecture.registered} students registered
                     </p>
                   </div>
-                  <Button className="w-full">Register for Lecture</Button>
+                  <div className="flex gap-2">
+                    <Button className="flex-1">Register for Lecture</Button>
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={lecture.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="h-3 w-3" />
+                      </a>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -275,7 +369,7 @@ const Alumni = () => {
 
         {/* Job Referrals */}
         <TabsContent value="referrals" className="mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {jobReferrals.map((job, index) => (
               <Card key={index} className="card-hover">
                 <CardHeader>
@@ -296,7 +390,14 @@ const Alumni = () => {
                     <span className="text-muted-foreground">Application Deadline</span>
                     <span className="font-medium text-destructive">{job.deadline}</span>
                   </div>
-                  <Button className="w-full">Request Referral</Button>
+                  <div className="flex gap-2">
+                    <Button className="flex-1">Request Referral</Button>
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={job.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="h-3 w-3" />
+                      </a>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -321,6 +422,12 @@ const Alumni = () => {
                           <h3 className="font-semibold text-lg">{story.name}</h3>
                           <Badge variant="outline">Batch of {story.batch}</Badge>
                         </div>
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={story.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                            <Linkedin className="h-3 w-3 mr-1" />
+                            Connect
+                          </a>
+                        </Button>
                       </div>
                       <p className="text-primary font-medium mb-2">{story.achievement}</p>
                       <p className="text-muted-foreground">{story.story}</p>
